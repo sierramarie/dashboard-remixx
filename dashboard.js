@@ -75,13 +75,35 @@ console.log(inputValue)
 // 6. Add the "table-hover" class to the table. See the Bootstrap table docs.
 
 
-// 7. Add the "success" class to the 7th - 10th row of the table, like: <tr class="success">...</tr>
 
+// 7. Add the "success" class to the 7th - 10th row of the table, like: <tr class="success">...</tr>
+var specialRows = document.querySelector('tr')[6];
+specialRows.classList.add('success');
+
+var specialRows = document.querySelector('tr')[9];
+specialRows.classList.add('success');
 
 // 8. Change the table header names to: ID, First Name, Last Name, Department, Client.
+var headerName0 = document.getElementsByTagName('th')[0];
+headerName0.innerText = 'ID';
+
+var headerName1 = document.getElementsByTagName('th')[1];
+headerName.innerText = 'First Name';
+
+var headerName2 = document.getElementsByTagName('th')[2];
+headerName1.innerText = 'Last Name';
+
+var headerName3 = document.getElementsByTagName('th')[3];
+headerName1.innerText = 'Department';
+
+var headerName4 = document.getElementsByTagName('th')[4];
+headerName1.innerText = 'Client';
+
 
 
 // 9. Make an array of objects, each object representing a single row in the table. Remove the commas from the ID column and convert it to an actual Number data type. Example: [{id: 1001, firstName: 'Lorem', lastName: 'ipsum', department: 'dolor', client: 'sit'}]
 
 
 // 10. Make each word in the table capitalized.
+var capitalizedWords = document.querySelector('tbody');
+
