@@ -3,6 +3,10 @@ var thing = document.getElementsByTagName('tr').length;
 
 console.log(thing - 1);
 
+// var rows = document.querySelectorAll('tbody tr');
+// console.log(rows.length); 
+// **another way to do it, more specific. still right. 
+// ------------------------
 // 2. Set each dashboard image to different images, one for each season. Make sure you also set the alt="" attribute with an appropriate description.
 
 var winterImage = document.getElementsByTagName('img')[0];
@@ -20,6 +24,12 @@ summerImage.src = 'http://unsplash.it/400?image=689';
 var fallImage = document.getElementsByTagName('img')[3];
 
 fallImage.src = 'http://unsplash.it/400?image=776';
+
+// var images = document.querySelectorAll('img');
+// images[0].src = 'https://unsplash.it/600/600;
+// *** another way. still right. less code. 
+
+// --------------------------
 
 // 3. Below each dashboard image, there's a season/quarter name. Below those, there are three dots. Replace those three dots with a randomly generated number formatted as currency, like $12,589.00.
 
@@ -47,6 +57,16 @@ numberThree.innerText = '$1,738';
 
 console.log('$' + numberThree);
 
+
+// var = currencies = document.querySelectorAll
+
+// currencies.forEach(function(currency) {
+//     var randomCurrency = Math.round(math.random() * 20000);
+//     currency.innerHTML = '$' + randomCurrency + '.00';
+// });
+// **** another way. randomizes numbers instead of hardcoding them 
+// -----------------
+
 // 4. Change the currently selected left side menu item from Overview to Reports.
 
 // ****var changeReports = document.querySelectorAll('#');
@@ -71,6 +91,7 @@ var inputValue = document.querySelectorAll('.form-control');
 // var x = inputValue.setAttribute("placeholder", "Q4 Sales");
 console.log(inputValue)
 // jeff did forEach(); 
+// --------------
 
 // 6. Add the "table-hover" class to the table. See the Bootstrap table docs.
 
@@ -99,11 +120,55 @@ headerName1.innerText = 'Department';
 var headerName4 = document.getElementsByTagName('th')[4];
 headerName1.innerText = 'Client';
 
-
+// --------------
 
 // 9. Make an array of objects, each object representing a single row in the table. Remove the commas from the ID column and convert it to an actual Number data type. Example: [{id: 1001, firstName: 'Lorem', lastName: 'ipsum', department: 'dolor', client: 'sit'}]
 
+var data = [];
+// declared empty array
+var rows = document.querySelectorAll('tbody tr');
+// call all rows 
+console.log(rows);
+
+rows.forEach(function(row) {
+    var object = {};
+    // declared empty object 
+    object.id = Number(row.children[0].innerText.replace(','));
+    // or --- (/,/g,'')
+    // getting into the rows AND targetting whats inside the rows, the children.
+    // (/,/g,''); is reg expression targetting commas 
+    // Number(code)); built in function that returns a number back to you 
+    object.id = Number(row.children[0].innerText.replace(','));
+    object.firstName = row.children[1].innerText;
+    object.lastName = row.children[2].innerText;
+    object.department = row.children[3].innerText;
+    object.client = row.children[4].innerText;
+
+    data.push(object);
+});
+// // var object = {
+//     id: Number(row.children[0].innerText.replace(','));
+//     firstName: row.children[1].innerText,
+//     lastName: row.children[2].innerText,
+//     department: row.children[3].innerText,
+//     client: row.children[4].innerText,
+// };
+// **** another easier way to make array with objects. 
+
+
+// // push new things into array 
+// data.push(user);
+// // can change object to user, naming doesnt matter. 
+
+console.log(data);
+// --------------------
 
 // 10. Make each word in the table capitalized.
-var capitalizedWords = document.querySelector('tbody');
 
+
+
+
+document.querySelector('.table').classList.add('text-capitalized');
+
+// document.querySelector('.table).style.textTransform = 'capitalize';
+// *** both ways work. bootstrap has own way to do it (#1);
